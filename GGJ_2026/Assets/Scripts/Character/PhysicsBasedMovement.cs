@@ -1,9 +1,5 @@
 using UnityEngine;
 
-/// <summary>
-/// Единственная ответственность: перемещать объект с помощью физики (Rigidbody)
-/// на основе данных, полученных от IMovementInput. Не читает ввод сам.
-/// </summary>
 [RequireComponent(typeof(Rigidbody))]
 public class PhysicsBasedMovement : MonoBehaviour
 {

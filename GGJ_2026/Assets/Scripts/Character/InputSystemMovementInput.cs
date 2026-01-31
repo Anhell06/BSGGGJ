@@ -1,10 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-/// <summary>
-/// Единственная ответственность: читать новую Input System (InputSystem_Actions)
-/// и предоставлять данные через IMovementInput.
-/// </summary>
 public class InputSystemMovementInput : MonoBehaviour, IMovementInput
 {
     [SerializeField] private InputActionAsset inputActions;

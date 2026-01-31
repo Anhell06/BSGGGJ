@@ -1,10 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-/// <summary>
-/// Единственная ответственность: поворачивать объект(ы) по вводу Look (мышь / правый стик).
-/// Горизонтальный поворот — тело персонажа, вертикальный — опционально камера.
-/// </summary>
 public class MouseLook : MonoBehaviour
 {
     [Header("References")]
