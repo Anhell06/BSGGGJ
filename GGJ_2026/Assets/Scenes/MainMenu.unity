@@ -836,6 +836,7 @@ GameObject:
   m_Component:
   - component: {fileID: 824676164}
   - component: {fileID: 824676165}
+  - component: {fileID: 824676166}
   m_Layer: 0
   m_Name: Screens
   m_TagString: Untagged
@@ -873,11 +874,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84f90ea7c61431746aed72bcd61543f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScreenController
+  _cursorLock: {fileID: 824676166}
   defaultScreen: {fileID: 1582801246}
   screens:
   - {fileID: 1582801246}
   - {fileID: 352054239}
   - {fileID: 1463380822}
+--- !u!114 &824676166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 824676163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 202ec8a13b2dc7745b48f435bcf6b7b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CursorLock
+  lockOnEnable: 1
+  unlockOnDisable: 1
+  reLockOnApplicationFocus: 0
 --- !u!1 &968955379
 GameObject:
   m_ObjectHideFlags: 0
@@ -2047,7 +2064,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Game
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7355643244479948173, guid: e21f5962cab62034ba280e0321b41fbb, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 4349785410573117014, guid: e21f5962cab62034ba280e0321b41fbb, type: 3}
