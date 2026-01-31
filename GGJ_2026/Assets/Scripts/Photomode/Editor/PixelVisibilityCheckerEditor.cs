@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(PixelVisibilityChecker))]
+[CustomEditor(typeof(PhotoMaker))]
 public class PixelVisibilityCheckerEditor : Editor
 {
     public override void OnInspectorGUI()
@@ -9,8 +9,8 @@ public class PixelVisibilityCheckerEditor : Editor
         base.OnInspectorGUI();
         if (GUILayout.Button("CHECK VISIBILITY"))
         {
-            var x = target as PixelVisibilityChecker;
-            x.CheckVisibility();
+            var x = target as PhotoMaker;
+            x.MakePhoto();
         }
     }
 }

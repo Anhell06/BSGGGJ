@@ -7,7 +7,7 @@ using UnityEngine;
 public class Profile
 {
     [SerializeField]
-    private ObservableCollection<PhotoCard> _photoCards;
+    private ObservableCollection<PhotoCard> _photoCards = new ObservableCollection<PhotoCard>();
     public ObservableCollection<PhotoCard> PhotoCards => _photoCards;
 }
 

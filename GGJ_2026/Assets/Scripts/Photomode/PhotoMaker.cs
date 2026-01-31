@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Collections;
 
-public class PixelVisibilityChecker : MonoBehaviour
+public class PhotoMaker : MonoBehaviour
 {
     public Camera targetCamera;
     
@@ -23,17 +23,17 @@ public class PixelVisibilityChecker : MonoBehaviour
         visibilityRT.Create();
     }
     
-    public void CheckVisibility()
+    public void MakePhoto()
     {
         if (!Application.isPlaying)
         {
             Debug.LogError("CheckVisibility available only in Play Mode!");
             return;
         }
-        StartCoroutine(CheckVisibilityCoroutine());
+        StartCoroutine(MakePhotoCoroutine());
     }
 
-    public IEnumerator CheckVisibilityCoroutine()
+    private IEnumerator MakePhotoCoroutine()
     {
         if (!Application.isPlaying)
         {
