@@ -19,9 +19,9 @@ public class PhotoMaker : MonoBehaviour
     void Start()
     {
         // Создаем RenderTexture для захвата
-        visibilityRT = new RenderTexture(1920, 1080, 0, RenderTextureFormat.ARGB32);
+        visibilityRT = new RenderTexture(160, 90, 0, RenderTextureFormat.ARGB32);
         visibilityRT.Create();
-        photoRT = new RenderTexture(1920, 1080, 0, RenderTextureFormat.ARGB32);
+        photoRT = new RenderTexture(160, 90, 0, RenderTextureFormat.ARGB32);
         photoRT.Create();
     }
     
