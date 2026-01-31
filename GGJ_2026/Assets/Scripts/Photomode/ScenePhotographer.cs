@@ -19,7 +19,8 @@ public class ScenePhotographer : MonoBehaviour
         {
             var data = new ScenePhotoObjectData();
             data.renderer = renderer as Renderer;
-            data.material = data.renderer.sharedMaterial;
+            data.materials = new List<Material>();
+            data.materials.AddRange(data.renderer.sharedMaterials);
             data.photoTarget = renderer.GetComponent<PhotoTarget>();
             _photoObjects.Add(data);
         }
@@ -31,7 +32,13 @@ public class ScenePhotographer : MonoBehaviour
         {
             if (po.renderer != null)
             {
-                po.renderer.material = _photoMaterial;
+                List<Material> m = new List<Material>();
+                for (int i = 0; i < po.renderer.materials.Length; i++)
+                {
+                    m.Add(_photoMaterial);
+                }
+
+                po.renderer.materials = m.ToArray();
                 po?.photoTarget?.Prepare();
             }
         }
@@ -43,7 +50,10 @@ public class ScenePhotographer : MonoBehaviour
         {
             if (po.renderer != null)
             {
-                po.renderer.material = po.material;
+                for (int i = 0; i < po.renderer.materials.Length; i++)
+                {
+                    po.renderer.materials = po.materials.ToArray();
+                }
                 po?.photoTarget?.Restore();
             }
         }
@@ -60,6 +70,6 @@ public class ScenePhotographer : MonoBehaviour
 public class ScenePhotoObjectData
 {
     public Renderer renderer;
-    public Material material;
+    public List<Material> materials;
     public PhotoTarget photoTarget;
 }
