@@ -27,7 +27,7 @@ public class CameraScreen : Screen
     {
         canFinishQuest.color = PhotoMaker.CanFinishAnyQuest ? Color.green : Color.red;
         var clr = canFinishQuest.color;
-        clr.a = 0.5f;
+        clr.a = 0.2f;
         canFinishQuest.color = clr;
     }
 }

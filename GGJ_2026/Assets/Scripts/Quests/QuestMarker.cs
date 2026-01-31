@@ -24,12 +24,15 @@ public class QuestMarker : MonoBehaviour
             return false;
         }
 
-        var cameraOrigin = camera.transform.position;
+        var cameraOrigin = camera.transform.position + camera.transform.forward;
         var direction = transform.position - cameraOrigin;
-        if (Physics.Raycast(cameraOrigin, direction, 1000, LayerMask.GetMask("TempVisibility")))
+        if (Physics.Raycast(cameraOrigin, direction, out var hitInfo, 100, LayerMask.GetMask("Default", "TempVisibility")))
         {
-            _rend.material.color = Color.green;
-            return true;
+            if (hitInfo.collider.gameObject == this.gameObject)
+            {
+                _rend.material.color = Color.green;
+                return true;
+            }
         }
 
         _rend.material.color = Color.yellow;
