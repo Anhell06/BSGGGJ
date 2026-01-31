@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::QuestMarker
   _questId: 2
+  _rend: {fileID: 1488344280881844449}
 --- !u!33 &7375223840845657828
 MeshFilter:
   m_ObjectHideFlags: 0

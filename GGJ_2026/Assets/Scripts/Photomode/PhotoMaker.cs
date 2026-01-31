@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Collections;
@@ -18,10 +19,11 @@ public class PhotoMaker : MonoBehaviour
     
     void Start()
     {
+        int scale = 1;
         // Создаем RenderTexture для захвата
-        visibilityRT = new RenderTexture(160, 90, 0, RenderTextureFormat.ARGB32);
+        visibilityRT = new RenderTexture(160*scale, 90*scale, 0, RenderTextureFormat.ARGB32);
         visibilityRT.Create();
-        photoRT = new RenderTexture(160, 90, 0, RenderTextureFormat.ARGB32);
+        photoRT = new RenderTexture(160*scale, 90*scale, 0, RenderTextureFormat.ARGB32);
         photoRT.Create();
     }
     
@@ -73,7 +75,27 @@ public class PhotoMaker : MonoBehaviour
        //targetCamera.backgroundColor = originalBackground;
         RenderTexture.active = null;
     }
-    
+
+    private float _nextCheckQuestTime;
+
+    public static bool CanFinishAnyQuest { get; private set; } = false;
+
+    private void OnEnable()
+    {
+        CanFinishAnyQuest = false;
+    }
+
+    private void Update()
+    {
+        if (Time.time > _nextCheckQuestTime)
+        {
+            _nextCheckQuestTime = Time.time + 1.0f;
+            var q = QuestHolder.Instance.CheckQuest(this.targetCamera);
+
+            CanFinishAnyQuest = q != QuestId.None;
+        }
+    }
+
     private Texture2D RenderTextureToTexture2D(RenderTexture renderTexture)
     {
         // Сохраняем активный RenderTexture

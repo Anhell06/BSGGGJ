@@ -7,33 +7,32 @@ public class QuestMarker : MonoBehaviour
     [SerializeField]
     private QuestId _questId;
     public QuestId QuestId => _questId;
-
-    private bool isVisible = false;
+    [SerializeField]
+    private Renderer _rend;
     
     public bool IsVisible(Camera camera)
     {
+        Vector3 viewportPoint = camera.WorldToViewportPoint(transform.position);
+    
+        var isVisible = viewportPoint.x >= 0 && viewportPoint.x <= 1 &&
+               viewportPoint.y >= 0 && viewportPoint.y <= 1 &&
+               viewportPoint.z > 0;
+
         if (!isVisible)
         {
+            _rend.material.color = Color.red;
             return false;
         }
 
         var cameraOrigin = camera.transform.position;
         var direction = transform.position - cameraOrigin;
-        if (Physics.Raycast(cameraOrigin, direction, 1000, LayerMask.NameToLayer("TempVisibility")))
+        if (Physics.Raycast(cameraOrigin, direction, 1000, LayerMask.GetMask("TempVisibility")))
         {
+            _rend.material.color = Color.green;
             return true;
         }
 
+        _rend.material.color = Color.yellow;
         return false;
-    }
-
-    private void OnBecameVisible()
-    {
-        isVisible = true;
-    }
-
-    private void OnBecameInvisible()
-    {
-        isVisible = false;
     }
 }
