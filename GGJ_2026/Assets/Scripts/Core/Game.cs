@@ -9,6 +9,10 @@ public class Game : MonoBehaviour
     [SerializeField]
     private GameObject MainMenu;
 
+    [SerializeField]
+    private Configs _configs;
+    public Configs Configs => _configs;
+
     private void Awake()
     {
         if (_instance != null && _instance != this)
