@@ -19,7 +19,7 @@ public class PhotoAlbum : MonoBehaviour
         }
 
         foreach (var item in Game.Instance.Profile.PhotoCards)
-            TryAddPhotoCard(item.texture2D, item.rating, "temp");
+            TryAddPhotoCard(item);
 
         Game.Instance.Profile.PhotoCards.CollectionChanged += OnPhotoCardsCollectionChanged;
 
@@ -28,23 +28,23 @@ public class PhotoAlbum : MonoBehaviour
     private void OnPhotoCardsCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
     {
         foreach (var item in PhotoCardViews)
-            OnPhotoDelete(item);
+            item.gameObject.SetActive(false);
 
         var photoCards = e.NewItems;
 
         foreach (var item in Game.Instance.Profile.PhotoCards)
-            TryAddPhotoCard(item.texture2D, item.rating, "temp");
-
+            TryAddPhotoCard(item);
     }
 
     [Button]
-    public bool TryAddPhotoCard(Texture2D texture2D, int star, string name)
+    public bool TryAddPhotoCard(PhotoCard photoCard)
     {
         foreach (var item in PhotoCardViews)
         {
             if (!item.gameObject.activeSelf)
             {
-                item.SetImage(texture2D, star, name);
+                item.SetImage(photoCard.texture2D, photoCard.rating, name);
+                item.PhotoCard = photoCard;
                 item.gameObject.SetActive(true);
                 _activePhotoCount++;
                 return true;
@@ -57,6 +57,7 @@ public class PhotoAlbum : MonoBehaviour
     private void OnPhotoDelete(PhotoCardView photoCardView)
     {
         photoCardView.gameObject.SetActive(false);
+        Game.Instance.Profile.PhotoCards.Remove(photoCardView.PhotoCard);
         _activePhotoCount--;
     }
 }
