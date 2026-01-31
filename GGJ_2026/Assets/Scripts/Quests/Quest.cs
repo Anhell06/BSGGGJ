@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class QuestHolder: MonoBehaviour
 {
+    public static QuestHolder Instance { get; private set; }
     [SerializeField]
     private int _markersToFinishQuest = 5;
     public int MarkersToFinishQuest => _markersToFinishQuest;
 
     [SerializeField]
     private List<QuestMarker> _questMarkers;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     public QuestId CheckQuest(Camera camera)
     {
@@ -20,14 +26,14 @@ public class QuestHolder: MonoBehaviour
             {
                 if (x.ContainsKey(qm.QuestId))
                 {
-                    x[qm.QuestId]++;
+                    x[qm.QuestId] = x[qm.QuestId] + 1;
                 }
                 else
                 {
                     x[qm.QuestId] = 1;
                 }
 
-                if (x[qm.QuestId] > _markersToFinishQuest)
+                if (x[qm.QuestId] >= _markersToFinishQuest)
                 {
                     return qm.QuestId;
                 }
