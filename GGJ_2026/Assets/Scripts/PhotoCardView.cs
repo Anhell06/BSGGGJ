@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class PhotoCardView : MonoBehaviour
 {
+    public PhotoCard PhotoCard { get; set; }
     [SerializeField] private Image _image;
     [SerializeField] private List<GameObject> _stars;
     [SerializeField] private TMP_Text _name;

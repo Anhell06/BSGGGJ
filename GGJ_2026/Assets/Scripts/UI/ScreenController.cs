@@ -112,16 +112,16 @@ public class ScreenController : MonoBehaviour
     }
 
     /// <summary>Открыть экран по ссылке (используется настройками клавиш).</summary>
-    public void PushScreen(Screen screen, bool? overlay = null, bool? showCursor = null)
+    public Screen PushScreen(Screen screen, bool? overlay = null, bool? showCursor = null)
     {
-        if (screen == null) return;
-
+        if (screen == null) return screen;
+        PopScreen();
         bool isOverlay = overlay ?? screen.IsOverlay;
 
         if (_stack.Count > 0)
         {
             var top = _stack.Peek();
-            if (top == screen) return;
+            if (top == screen) return screen;
             if (!isOverlay)
                 top.Hide();
         }
@@ -135,14 +135,16 @@ public class ScreenController : MonoBehaviour
 
         if (_cursorLock != null && showCursor == true)
             _cursorLock.enabled = false;
+
+        return screen;
     }
 
     /// <summary>Открыть экран по типу (ищет в списке screens).</summary>
-    public void PushScreen<T>(bool? overlay = null, bool? showCursor = null) where T : Screen
+    public Screen PushScreen<T>(bool? overlay = null, bool? showCursor = null) where T : Screen
     {
         var screen = screens != null ? screens.FirstOrDefault(s => s is T) : null;
-        if (screen == null) return;
-        PushScreen(screen, overlay, showCursor);
+        if (screen == null) return screen;
+        return PushScreen(screen, overlay, showCursor);
     }
 
     /// <summary>Закрыть верхний экран. Если стэк опустел — показывается дефолтный.</summary>
