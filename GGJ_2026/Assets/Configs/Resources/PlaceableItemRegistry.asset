@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61379b0e1fe77274db8a3dfb365ad75b, type: 3}
+  m_Name: PlaceableItemRegistry
+  m_EditorClassIdentifier: Assembly-CSharp::PlaceableItemRegistry
+  items:
+  - {fileID: 7267999836597906542, guid: 1f0c79ed788b6df4287678f20f623283, type: 3}
