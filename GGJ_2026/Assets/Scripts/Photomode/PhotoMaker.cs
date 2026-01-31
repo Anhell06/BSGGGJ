@@ -1,5 +1,3 @@
-using System;
-using System.IO;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Collections;
@@ -21,9 +19,9 @@ public class PhotoMaker : MonoBehaviour
     void Start()
     {
         // Создаем RenderTexture для захвата
-        visibilityRT = new RenderTexture(512, 512, 0, RenderTextureFormat.ARGB32);
+        visibilityRT = new RenderTexture(1920, 1080, 0, RenderTextureFormat.ARGB32);
         visibilityRT.Create();
-        photoRT = new RenderTexture(512, 512, 0, RenderTextureFormat.ARGB32);
+        photoRT = new RenderTexture(1920, 1080, 0, RenderTextureFormat.ARGB32);
         photoRT.Create();
     }
     
@@ -105,15 +103,17 @@ public class PhotoMaker : MonoBehaviour
     private int CheckPixelsForVisibilityAndEvaluatePrice(Texture2D textureData, Texture2D texturePhoto)
     {
         pixelsCount.Clear();
-        Color[] pixels = textureData.GetPixels();
+        var pixels = textureData.GetPixels();
 
         int totalPrice = 0;
         int totalRating = 2;
         
         var pc = new PhotoCard();
+        var processedPixels = new List<Color>();
         
-        foreach (Color pixel in pixels)
+        for (int k = 0; k < pixels.Length; k++)
         {
+            var pixel = pixels[k];
             for (int i = 0; i < Game.Instance.Configs.PhotoTargetConfig.PhotoObjects.Count; i++)
             {
                 var po = Game.Instance.Configs.PhotoTargetConfig.PhotoObjects[i];
@@ -134,13 +134,22 @@ public class PhotoMaker : MonoBehaviour
                         totalRating += po.rating;
                         pc.objectIds.Add(i);
                     }
+                    processedPixels.Add(pixel);
+                }
+                else
+                {
+                    pixel.a = 0f;
+                    processedPixels.Add(pixel);
                 }
             }
         }
 
+        textureData.SetPixels(processedPixels.ToArray());
+
         pc.price = totalPrice;
         pc.rating = Mathf.Clamp(totalRating,0,3);
         pc.texture2D = texturePhoto;
+        pc.dataTexture2D = textureData;
         Game.Instance.Profile.PhotoCards.Add(pc);
         Debug.LogError($"Evaluate Stats: Price = {totalPrice} ; Rating = {totalRating}");
         return totalPrice;

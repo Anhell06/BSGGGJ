@@ -15,6 +15,7 @@ public class Profile
 public class PhotoCard
 {
     public Texture2D texture2D;
+    public Texture2D dataTexture2D;
     public List<int> objectIds;
     public int rating;
     public int price;
