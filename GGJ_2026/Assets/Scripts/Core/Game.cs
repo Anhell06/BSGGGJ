@@ -13,6 +13,8 @@ public class Game : MonoBehaviour
     private Configs _configs;
     public Configs Configs => _configs;
 
+    public Profile Profile { get; private set; } = new Profile();
+
     private void Awake()
     {
         if (_instance != null && _instance != this)

@@ -99,6 +99,9 @@ public class PixelVisibilityChecker : MonoBehaviour
         Color[] pixels = texture.GetPixels();
 
         int totalPrice = 0;
+        int totalRating = 2;
+        
+        var pc = new PhotoCard();
         
         foreach (Color pixel in pixels)
         {
@@ -119,11 +122,18 @@ public class PixelVisibilityChecker : MonoBehaviour
                     if (pixelsCount[i] == po.minPixels)
                     {
                         totalPrice += po.price;
+                        totalRating += po.rating;
+                        pc.objectIds.Add(i);
                     }
                 }
             }
         }
-        Debug.LogError($"Evaluate Price: {totalPrice}");
+
+        pc.price = totalPrice;
+        pc.rating = Mathf.Clamp(totalRating,0,3);
+        pc.texture2D = texture;
+        Game.Instance.Profile.PhotoCards.Add(pc);
+        Debug.LogError($"Evaluate Stats: Price = {totalPrice} ; Rating = totalRating");
         return totalPrice;
     }
     
