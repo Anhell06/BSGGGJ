@@ -18,6 +18,9 @@ public class PhotoAlbum : MonoBehaviour
             item.OnDelete += () => OnPhotoDelete(item);
         }
 
+        foreach (var item in Game.Instance.Profile.PhotoCards)
+            TryAddPhotoCard(item.texture2D, item.rating, "temp");
+
         Game.Instance.Profile.PhotoCards.CollectionChanged += OnPhotoCardsCollectionChanged;
 
     }
@@ -39,7 +42,7 @@ public class PhotoAlbum : MonoBehaviour
     {
         foreach (var item in PhotoCardViews)
         {
-            if (!item.gameObject.activeInHierarchy)
+            if (!item.gameObject.activeSelf)
             {
                 item.SetImage(texture2D, star, name);
                 item.gameObject.SetActive(true);
