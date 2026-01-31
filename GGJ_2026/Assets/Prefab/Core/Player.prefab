@@ -231,7 +231,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PhysicsBasedMovement
   moveSpeed: 10
   forceMode: 0
-  jumpForce: 7
+  jumpForce: 3
   groundMask:
     serializedVersion: 2
     m_Bits: 55

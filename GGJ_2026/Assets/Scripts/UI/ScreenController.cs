@@ -1,18 +1,28 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Device;
+using UnityEngine.InputSystem;
 using System.Linq;
-
 
 #if UNITY_EDITOR
 using Sirenix.OdinInspector;
 #endif
+
+[Serializable]
+public class ScreenInputBinding
+{
+    [Tooltip("Экшен из новой Input System (например, из InputSystem_Actions). При performed открывается экран.")]
+    public InputActionReference actionReference;
+    [Tooltip("Экран, который открывается по срабатыванию экшена.")]
+    public Screen screen;
+}
 
 /// <summary>
 /// Управляет стэком экранов: PushScreen (открыть), PopScreen (закрыть).
 /// Экраны — классы на объектах в сцене (наследники Screen).
 /// Overlay-экраны открываются поверх; остальные скрывают текущий экран.
 /// Если стэк пуст — показывается дефолтный экран.
+/// Настройки ввода — в списке Input Bindings (новая Input System): по срабатыванию экшена откроется нужный экран.
 /// </summary>
 public class ScreenController : MonoBehaviour
 {
@@ -25,6 +35,10 @@ public class ScreenController : MonoBehaviour
     [Tooltip("Показывается, когда стэк экранов пуст. Обязательно назначь.")]
     [SerializeField] private Screen defaultScreen;
     [SerializeField] private List<Screen> screens;
+
+    [Header("Новая Input System")]
+    [Tooltip("Экшен → экран. При performed экшена открывается соответствующий экран.")]
+    [SerializeField] private List<ScreenInputBinding> inputBindings = new List<ScreenInputBinding>();
 
     private readonly Stack<Screen> _stack = new Stack<Screen>();
 
@@ -55,12 +69,53 @@ public class ScreenController : MonoBehaviour
             _instance = null;
     }
 
-    public void PushScreen<T>(bool? overlay = null) where T : Screen
+    private readonly List<SubscribedScreenAction> _subscribedActions = new List<SubscribedScreenAction>();
+
+    private void OnEnable()
     {
-        var screen = screens.FirstOrDefault(s => s is T);
+        _subscribedActions.Clear();
+        if (inputBindings == null) return;
+        foreach (var binding in inputBindings)
+        {
+            if (binding.actionReference == null || binding.screen == null) continue;
+            var action = binding.actionReference.action;
+            if (action == null) continue;
+            var screen = binding.screen;
+            void OnPerformed(InputAction.CallbackContext ctx)
+            {
+                if (CurrentScreen == screen)
+                    PopScreen();
+                else
+                    PushScreen(screen);
+            }
+            action.performed += OnPerformed;
+            action.Enable();
+            _subscribedActions.Add(new SubscribedScreenAction { Action = action, Callback = OnPerformed });
+        }
+    }
+
+    private void OnDisable()
+    {
+        foreach (var sub in _subscribedActions)
+        {
+            sub.Action.performed -= sub.Callback;
+            sub.Action.Disable();
+        }
+        _subscribedActions.Clear();
+    }
+
+    private class SubscribedScreenAction
+    {
+        public InputAction Action;
+        public Action<InputAction.CallbackContext> Callback;
+    }
+
+    /// <summary>Открыть экран по ссылке (используется настройками клавиш).</summary>
+    public void PushScreen(Screen screen, bool? overlay = null, bool? showCursor = null)
+    {
         if (screen == null) return;
 
-        var isOverlay = overlay ?? screen.IsOverlay;
+        bool isOverlay = overlay ?? screen.IsOverlay;
 
         if (_stack.Count > 0)
         {
@@ -77,7 +132,16 @@ public class ScreenController : MonoBehaviour
         _stack.Push(screen);
         screen.Show();
 
-        _cursorLock.enabled = false;
+        if (_cursorLock != null && showCursor == true)
+            _cursorLock.enabled = false;
+    }
+
+    /// <summary>Открыть экран по типу (ищет в списке screens).</summary>
+    public void PushScreen<T>(bool? overlay = null, bool? showCursor = null) where T : Screen
+    {
+        var screen = screens != null ? screens.FirstOrDefault(s => s is T) : null;
+        if (screen == null) return;
+        PushScreen(screen, overlay, showCursor);
     }
 
     /// <summary>Закрыть верхний экран. Если стэк опустел — показывается дефолтный.</summary>
@@ -88,6 +152,9 @@ public class ScreenController : MonoBehaviour
 
         Screen top = _stack.Pop();
         top.Hide();
+
+        if (_cursorLock != null)
+            _cursorLock.enabled = true;
 
         if (_stack.Count > 0)
         {
@@ -113,8 +180,6 @@ public class ScreenController : MonoBehaviour
     {
         if (defaultScreen != null)
             defaultScreen.Show();
-
-        _cursorLock.enabled = true;
     }
 
 #if UNITY_EDITOR

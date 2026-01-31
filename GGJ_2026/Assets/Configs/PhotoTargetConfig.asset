@@ -13,13 +13,63 @@ MonoBehaviour:
   m_Name: PhotoTargetConfig
   m_EditorClassIdentifier: Assembly-CSharp::PhotoTargetConfig
   _photoObjects:
-  - technicalColor: {r: 0.18140244, g: 1, b: 0, a: 1}
+  - technicalColor: {r: 1, g: 0.010436703, b: 0, a: 1}
+    price: -1000
+    rating: -2
+    minPixels: 1
+    prefab: {fileID: -6471805682155716033, guid: 4329daf6908f766479f2ff7cbeb7f004, type: 3}
+  - technicalColor: {r: 1, g: 0.4273501, b: 0, a: 1}
+    price: -1000
+    rating: -2
+    minPixels: 1
+    prefab: {fileID: 7940686187779861936, guid: 1d04faa8ccf8ff84b8390d30cc089553, type: 3}
+  - technicalColor: {r: 0.119199276, g: 1, b: 0, a: 1}
     price: 100
-    rating: 0
+    rating: 1
     minPixels: 1
-    prefab: {fileID: 4974062638616746329, guid: 899358dfa193b9149bb135e849f76e66, type: 3}
-  - technicalColor: {r: 0.8605151, g: 0, b: 1, a: 1}
-    price: 10
-    rating: 0
+    prefab: {fileID: 1327012800147526239, guid: 768f5f15ffe6cf64ab1bc723dbb052eb, type: 3}
+  - technicalColor: {r: 0, g: 1, b: 0.67544794, a: 1}
+    price: 100
+    rating: 1
     minPixels: 1
-    prefab: {fileID: 4974062638616746329, guid: 2d1b8fae70ecefd4da08cbd6610a6d96, type: 3}
+    prefab: {fileID: 2458637823363254847, guid: 40f6f9554fb29364a9b2d26f84dd7a18, type: 3}
+  - technicalColor: {r: 0, g: 1, b: 0.9728527, a: 1}
+    price: 100
+    rating: 1
+    minPixels: 1
+    prefab: {fileID: 1014546727008886707, guid: 020824e620f5a75479bed245771b1fcd, type: 3}
+  - technicalColor: {r: 0, g: 0.7945037, b: 1, a: 1}
+    price: 100
+    rating: 1
+    minPixels: 1
+    prefab: {fileID: 6118146107696301816, guid: 6d465e2ca8fff5e4788017a00874ecaf, type: 3}
+  - technicalColor: {r: 0.6415094, g: 0.045294706, b: 0, a: 1}
+    price: -1000
+    rating: -2
+    minPixels: 1
+    prefab: {fileID: 5717436609046743980, guid: 71be265e077feed4b91369f504ba8bd8, type: 3}
+  - technicalColor: {r: 0.4811321, g: 0, b: 0.12608969, a: 1}
+    price: 500
+    rating: -2
+    minPixels: 1
+    prefab: {fileID: -4895650171950327130, guid: b2e6777f335ec8749af151184f6c0673, type: 3}
+  - technicalColor: {r: 0.6981132, g: 0.4923211, b: 0, a: 1}
+    price: -1000
+    rating: -2
+    minPixels: 1
+    prefab: {fileID: 5717436609046743980, guid: c9f7d856907fd5845a687c16bfbe6720, type: 3}
+  - technicalColor: {r: 0.4245283, g: 0.30807933, b: 0, a: 1}
+    price: -1000
+    rating: -2
+    minPixels: 1
+    prefab: {fileID: 5717436609046743980, guid: c146c1a6a1d58414eb755608a5a56d00, type: 3}
+  - technicalColor: {r: 0.5849056, g: 0, b: 0.4043257, a: 1}
+    price: -1000
+    rating: -2
+    minPixels: 1
+    prefab: {fileID: 5717436609046743980, guid: ecedec292877ee2439f34a40bb0d1c97, type: 3}
+  - technicalColor: {r: 0.38679248, g: 0, b: 0.26633796, a: 1}
+    price: -1000
+    rating: -2
+    minPixels: 1
+    prefab: {fileID: 5717436609046743980, guid: ac1894e88bf1625408f68c4b3a6d87f4, type: 3}
