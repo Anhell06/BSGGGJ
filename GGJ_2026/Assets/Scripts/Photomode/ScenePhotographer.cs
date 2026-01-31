@@ -26,6 +26,11 @@ public class ScenePhotographer : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        CollectSceneData();
+    }
+
     public void Prepare()
     {
         foreach (var po in _photoObjects)

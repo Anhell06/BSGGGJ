@@ -19,6 +19,8 @@ public class ScreenController : MonoBehaviour
     public static ScreenController Instance => _instance;
     private static ScreenController _instance;
 
+    [SerializeField] private CursorLock _cursorLock;
+
     [Header("Дефолтный экран")]
     [Tooltip("Показывается, когда стэк экранов пуст. Обязательно назначь.")]
     [SerializeField] private Screen defaultScreen;
@@ -74,6 +76,8 @@ public class ScreenController : MonoBehaviour
 
         _stack.Push(screen);
         screen.Show();
+
+        _cursorLock.enabled = false;
     }
 
     /// <summary>Закрыть верхний экран. Если стэк опустел — показывается дефолтный.</summary>
@@ -109,6 +113,8 @@ public class ScreenController : MonoBehaviour
     {
         if (defaultScreen != null)
             defaultScreen.Show();
+
+        _cursorLock.enabled = true;
     }
 
 #if UNITY_EDITOR
