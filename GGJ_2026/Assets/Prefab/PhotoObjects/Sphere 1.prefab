@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7971143870656248901}
   - component: {fileID: 6086171222307227425}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: Sphere 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12358fc1f3991244ab51103c37e39267, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PhotoTarget
-  _color: {r: 0.18140244, g: 1, b: 0, a: 1}
+  _color: {r: 0.8605151, g: 0, b: 1, a: 1}
   _renderer: {fileID: 7971143870656248901}
 --- !u!33 &3012437018840591111
 MeshFilter:
