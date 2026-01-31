@@ -1,7 +1,6 @@
-using NUnit.Framework;
 using Sirenix.OdinInspector;
-using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using UnityEngine;
 
 public class PhotoAlbum : MonoBehaviour
@@ -18,6 +17,21 @@ public class PhotoAlbum : MonoBehaviour
         {
             item.OnDelete += () => OnPhotoDelete(item);
         }
+
+        Game.Instance.Profile.PhotoCards.CollectionChanged += OnPhotoCardsCollectionChanged;
+
+    }
+
+    private void OnPhotoCardsCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+    {
+        foreach (var item in PhotoCardViews)
+            OnPhotoDelete(item);
+
+        var photoCards = e.NewItems;
+
+        foreach (var item in Game.Instance.Profile.PhotoCards)
+            TryAddPhotoCard(item.texture2D, item.rating, "temp");
+
     }
 
     [Button]

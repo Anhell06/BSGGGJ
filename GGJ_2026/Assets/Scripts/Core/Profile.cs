@@ -1,15 +1,14 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using UnityEngine;
 
 [Serializable]
 public class Profile
 {
     [SerializeField]
-    private List<PhotoCard> _photoCards;
-    public List<PhotoCard> PhotoCards => _photoCards;
-
-    
+    private ObservableCollection<PhotoCard> _photoCards;
+    public ObservableCollection<PhotoCard> PhotoCards => _photoCards;
 }
 
 [Serializable]
