@@ -6,8 +6,7 @@ public class Game : MonoBehaviour
 
     private static Game _instance;
 
-    [SerializeField]
-    private GameObject MainMenu;
+    public ScreenController  ScreenController;
 
     [SerializeField]
     private Configs _configs;
@@ -23,6 +22,7 @@ public class Game : MonoBehaviour
 
         _instance = this;
         DontDestroyOnLoad(gameObject);
+        //ScreenController.PushScreen<MainMenuScreen>();
     }
 
     private void OnDestroy()
