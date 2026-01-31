@@ -79,6 +79,7 @@ public class PhotoMaker : MonoBehaviour
     private float _nextCheckQuestTime;
 
     public static bool CanFinishAnyQuest { get; private set; } = false;
+    private QuestId _canFinishQuest = QuestId.None;
 
     private void OnEnable()
     {
@@ -93,6 +94,7 @@ public class PhotoMaker : MonoBehaviour
             var q = QuestHolder.Instance.CheckQuest(this.targetCamera);
 
             CanFinishAnyQuest = q != QuestId.None;
+            _canFinishQuest = q;
         }
     }
 
@@ -172,6 +174,7 @@ public class PhotoMaker : MonoBehaviour
         pc.rating = Mathf.Clamp(totalRating,0,3);
         pc.texture2D = texturePhoto;
         pc.dataTexture2D = textureData;
+        pc.finishQuest = _canFinishQuest;
         Game.Instance.Profile.PhotoCards.Add(pc);
         Debug.LogError($"Evaluate Stats: Price = {totalPrice} ; Rating = {totalRating}");
         return totalPrice;
