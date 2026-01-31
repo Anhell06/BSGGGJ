@@ -19,4 +19,5 @@ public class PhotoCard
     public List<int> objectIds;
     public int rating;
     public int price;
+    public QuestId finishQuest = QuestId.None;
 }
