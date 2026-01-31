@@ -142,7 +142,7 @@ public class PhotoMaker : MonoBehaviour
         pc.rating = Mathf.Clamp(totalRating,0,3);
         pc.texture2D = texturePhoto;
         Game.Instance.Profile.PhotoCards.Add(pc);
-        Debug.LogError($"Evaluate Stats: Price = {totalPrice} ; Rating = totalRating");
+        Debug.LogError($"Evaluate Stats: Price = {totalPrice} ; Rating = {totalRating}");
         return totalPrice;
     }
     
