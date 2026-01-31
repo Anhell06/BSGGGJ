@@ -29,11 +29,18 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void SetGameplayInputEnabled(bool enabled)
+    {
+        if (InputSystemMovementInput != null) InputSystemMovementInput.enabled = enabled;
+        if (MouseLook != null) MouseLook.enabled = enabled;
+        if (PhysicsBasedMovement != null) PhysicsBasedMovement.enabled = enabled && !PhotographerMode;
+    }
+
     public void SetPhotographerMode(bool on)
     {
         if (PhotographerMode == on) return;
         PhotographerMode = on;
-        PhysicsBasedMovement.enabled = !PhotographerMode;
+        if (PhysicsBasedMovement != null) PhysicsBasedMovement.enabled = !PhotographerMode;
         if (MainCamera != null) MainCamera.gameObject.SetActive(!PhotographerMode);
         if (PhotoCamera != null) PhotoCamera.gameObject.SetActive(PhotographerMode);
     }

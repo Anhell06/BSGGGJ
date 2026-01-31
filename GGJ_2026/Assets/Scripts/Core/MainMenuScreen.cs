@@ -1,20 +1,23 @@
-using Unity.VisualScripting;
+using UnityEngine;
 
-public class MainMenuScreen : Screen 
+public class MainMenuScreen : Screen
 {
     protected override void OnShow()
     {
-        base.OnShow();
-    }
-
-
-    public static void StartGame()
-    { 
-        Game.Instance.ScreenController.PopScreen();
+        var player = FindFirstObjectByType<Player>();
+        if (player != null)
+            player.SetGameplayInputEnabled(false);
     }
 
     protected override void OnHide()
     {
-        base.OnHide();
+        var player = FindFirstObjectByType<Player>();
+        if (player != null)
+            player.SetGameplayInputEnabled(true);
     }
-};
+
+    public static void StartGame()
+    {
+        Game.Instance.ScreenController.PopScreen();
+    }
+}
