@@ -16,7 +16,7 @@ public class PhotoCard
 {
     public Texture2D texture2D;
     public Texture2D dataTexture2D;
-    public List<int> objectIds;
+    public List<int> objectIds = new List<int>();
     public int rating;
     public int price;
     public QuestId finishQuest = QuestId.None;
