@@ -8,7 +8,7 @@ public class CursorLock : MonoBehaviour
 {
     [SerializeField] private bool lockOnEnable = true;
     [SerializeField] private bool unlockOnDisable = true;
-    [SerializeField] private bool reLockOnApplicationFocus = true;
+    [SerializeField] private bool reLockOnApplicationFocus = false;
 
     private void OnEnable()
     {

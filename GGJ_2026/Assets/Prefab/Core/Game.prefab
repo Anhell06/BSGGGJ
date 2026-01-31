@@ -46,6 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Game
   MainMenu: {fileID: 0}
+  _configs:
+    PhotoTargetConfig: {fileID: 0}
 --- !u!114 &7355643244479948173
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60,4 +62,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CursorLock
   lockOnEnable: 1
   unlockOnDisable: 1
-  reLockOnApplicationFocus: 1
+  reLockOnApplicationFocus: 0
