@@ -45,7 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1226fed8bb7b3c341802ea37c4501e9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Game
-  MainMenu: {fileID: 0}
+  ScreenController: {fileID: 0}
+  _configs:
+    PhotoTargetConfig: {fileID: 11400000, guid: 915ad0de7259a754d8dd0ca7b45a7647, type: 2}
 --- !u!114 &7355643244479948173
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60,4 +62,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CursorLock
   lockOnEnable: 1
   unlockOnDisable: 1
-  reLockOnApplicationFocus: 1
+  reLockOnApplicationFocus: 0

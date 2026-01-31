@@ -1,5 +1,7 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 public class InputSystemMovementInput : MonoBehaviour, IMovementInput
 {
@@ -7,8 +9,16 @@ public class InputSystemMovementInput : MonoBehaviour, IMovementInput
     [SerializeField] private string actionMapName = "Player";
     [SerializeField] private string moveActionName = "Move";
     [SerializeField] private string jumpActionName = "Jump";
+    [FormerlySerializedAs("photoActionName")]
+    [SerializeField] private string makePhotoActionName = "MakePhoto";
+    [SerializeField] private string switchCameraActionName = "SwitchPhotoCamera";
+
+    public Action OnPhotoMaked;
+    public Action OnCameraSwitched;
 
     private InputAction _moveAction;
+    private InputAction _makePhotoAction;
+    private InputAction _switchCameraAction;
     private InputAction _jumpAction;
     private Vector2 _moveValue;
     private bool _jumpPressedThisFrame;
@@ -34,22 +44,34 @@ public class InputSystemMovementInput : MonoBehaviour, IMovementInput
 
         _moveAction = map.FindAction(moveActionName);
         _jumpAction = map.FindAction(jumpActionName);
+        _makePhotoAction = map.FindAction(makePhotoActionName);
+        _switchCameraAction = map.FindAction(switchCameraActionName);
 
         if (_moveAction == null)
             Debug.LogWarning($"[InputSystemMovementInput] Action '{moveActionName}' не найдена.");
         if (_jumpAction == null)
             Debug.LogWarning($"[InputSystemMovementInput] Action '{jumpActionName}' не найдена.");
+        if (_makePhotoAction == null)
+            Debug.LogWarning($"[InputSystemMovementInput] Action '{makePhotoActionName}' не найдена.");
+        if (_switchCameraAction == null)
+            Debug.LogWarning($"[InputSystemMovementInput] Action '{_switchCameraAction}' не найдена.");
 
         if (_moveAction != null)
             _moveAction.Enable();
         if (_jumpAction != null)
             _jumpAction.Enable();
+        if (_makePhotoAction != null)
+            _makePhotoAction.Enable();
+        if (_switchCameraAction != null)
+            _switchCameraAction.Enable();
     }
 
     private void OnDisable()
     {
         _moveAction?.Disable();
         _jumpAction?.Disable();
+        _makePhotoAction?.Disable();
+        _switchCameraAction?.Disable();
     }
 
     private void Update()
@@ -58,5 +80,13 @@ public class InputSystemMovementInput : MonoBehaviour, IMovementInput
             _moveValue = _moveAction.ReadValue<Vector2>();
         if (_jumpAction != null)
             _jumpPressedThisFrame = _jumpAction.WasPressedThisFrame();
+        if (_makePhotoAction != null && _makePhotoAction.WasPressedThisFrame())
+        {
+            OnPhotoMaked?.Invoke();
+        }
+        if (_switchCameraAction != null && _switchCameraAction.WasPressedThisFrame())
+        {
+            OnCameraSwitched?.Invoke();
+        }
     }
 }

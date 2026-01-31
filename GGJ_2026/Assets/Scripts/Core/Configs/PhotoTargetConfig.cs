@@ -23,5 +23,7 @@ public class PhotoObjectNote
 {
     public Color technicalColor;
     public int price;
+    public int rating;
+    public int minPixels = 1;
     public PhotoTarget prefab;
 }

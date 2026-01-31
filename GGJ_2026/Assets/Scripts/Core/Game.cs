@@ -6,12 +6,13 @@ public class Game : MonoBehaviour
 
     private static Game _instance;
 
-    [SerializeField]
-    private GameObject MainMenu;
+    public ScreenController  ScreenController;
 
     [SerializeField]
     private Configs _configs;
     public Configs Configs => _configs;
+
+    public Profile Profile { get; private set; } = new Profile();
 
     private void Awake()
     {
@@ -23,6 +24,7 @@ public class Game : MonoBehaviour
 
         _instance = this;
         DontDestroyOnLoad(gameObject);
+        //ScreenController.PushScreen<MainMenuScreen>();
     }
 
     private void OnDestroy()
