@@ -104,6 +104,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "PhotoArchive",
+                    "type": "Button",
+                    "id": "f16491dd-ac95-43fa-bfaa-57fc3df0cc97",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "OpenBlooking",
+                    "type": "Button",
+                    "id": "39efb399-06fd-47ed-948b-e9ba56d0ff55",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -511,6 +529,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "SwitchPhotoCamera",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3f08c42b-ff84-4e17-9e89-4431c23bf7dd",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PhotoArchive",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "954c577b-19c5-4a3b-9989-fa7bda5c144d",
+                    "path": "<Keyboard>/b",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OpenBlooking",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

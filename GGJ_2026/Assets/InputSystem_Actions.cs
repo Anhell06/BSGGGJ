@@ -190,6 +190,24 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PhotoArchive"",
+                    ""type"": ""Button"",
+                    ""id"": ""f16491dd-ac95-43fa-bfaa-57fc3df0cc97"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""OpenBlooking"",
+                    ""type"": ""Button"",
+                    ""id"": ""39efb399-06fd-47ed-948b-e9ba56d0ff55"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -597,6 +615,28 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""SwitchPhotoCamera"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3f08c42b-ff84-4e17-9e89-4431c23bf7dd"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PhotoArchive"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""954c577b-19c5-4a3b-9989-fa7bda5c144d"",
+                    ""path"": ""<Keyboard>/b"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""OpenBlooking"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1195,6 +1235,8 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
         m_Player_MakePhoto = m_Player.FindAction("MakePhoto", throwIfNotFound: true);
         m_Player_SwitchPhotoCamera = m_Player.FindAction("SwitchPhotoCamera", throwIfNotFound: true);
+        m_Player_PhotoArchive = m_Player.FindAction("PhotoArchive", throwIfNotFound: true);
+        m_Player_OpenBlooking = m_Player.FindAction("OpenBlooking", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1299,6 +1341,8 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Sprint;
     private readonly InputAction m_Player_MakePhoto;
     private readonly InputAction m_Player_SwitchPhotoCamera;
+    private readonly InputAction m_Player_PhotoArchive;
+    private readonly InputAction m_Player_OpenBlooking;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -1354,6 +1398,14 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/SwitchPhotoCamera".
         /// </summary>
         public InputAction @SwitchPhotoCamera => m_Wrapper.m_Player_SwitchPhotoCamera;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/PhotoArchive".
+        /// </summary>
+        public InputAction @PhotoArchive => m_Wrapper.m_Player_PhotoArchive;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/OpenBlooking".
+        /// </summary>
+        public InputAction @OpenBlooking => m_Wrapper.m_Player_OpenBlooking;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1413,6 +1465,12 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @SwitchPhotoCamera.started += instance.OnSwitchPhotoCamera;
             @SwitchPhotoCamera.performed += instance.OnSwitchPhotoCamera;
             @SwitchPhotoCamera.canceled += instance.OnSwitchPhotoCamera;
+            @PhotoArchive.started += instance.OnPhotoArchive;
+            @PhotoArchive.performed += instance.OnPhotoArchive;
+            @PhotoArchive.canceled += instance.OnPhotoArchive;
+            @OpenBlooking.started += instance.OnOpenBlooking;
+            @OpenBlooking.performed += instance.OnOpenBlooking;
+            @OpenBlooking.canceled += instance.OnOpenBlooking;
         }
 
         /// <summary>
@@ -1457,6 +1515,12 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @SwitchPhotoCamera.started -= instance.OnSwitchPhotoCamera;
             @SwitchPhotoCamera.performed -= instance.OnSwitchPhotoCamera;
             @SwitchPhotoCamera.canceled -= instance.OnSwitchPhotoCamera;
+            @PhotoArchive.started -= instance.OnPhotoArchive;
+            @PhotoArchive.performed -= instance.OnPhotoArchive;
+            @PhotoArchive.canceled -= instance.OnPhotoArchive;
+            @OpenBlooking.started -= instance.OnOpenBlooking;
+            @OpenBlooking.performed -= instance.OnOpenBlooking;
+            @OpenBlooking.canceled -= instance.OnOpenBlooking;
         }
 
         /// <summary>
@@ -1834,6 +1898,20 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnSwitchPhotoCamera(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "PhotoArchive" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnPhotoArchive(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "OpenBlooking" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnOpenBlooking(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.

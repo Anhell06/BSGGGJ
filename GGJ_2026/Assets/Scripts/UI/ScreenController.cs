@@ -13,6 +13,7 @@ public class ScreenInputBinding
 {
     [Tooltip("Экшен из новой Input System (например, из InputSystem_Actions). При performed открывается экран.")]
     public InputActionReference actionReference;
+    public bool ShowCursor;
     [Tooltip("Экран, который открывается по срабатыванию экшена.")]
     public Screen screen;
 }
@@ -86,7 +87,7 @@ public class ScreenController : MonoBehaviour
                 if (CurrentScreen == screen)
                     PopScreen();
                 else
-                    PushScreen(screen);
+                    PushScreen(screen, showCursor: binding.ShowCursor);
             }
             action.performed += OnPerformed;
             action.Enable();
