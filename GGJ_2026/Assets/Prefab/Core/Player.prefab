@@ -47,6 +47,7 @@ GameObject:
   - component: {fileID: 5825763188985171975}
   - component: {fileID: 7760238318297951555}
   - component: {fileID: 1505204059842291629}
+  - component: {fileID: 4714617985758582505}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -146,10 +147,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
+  m_Radius: 0.22960171
+  m_Height: 0.48151338
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: -0.7592433, z: 0}
 --- !u!114 &2120338600359757186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,7 +206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65ed01b494e183a44a7b2ea6d048ac22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PhysicsBasedMovement
-  moveSpeed: 20
+  moveSpeed: 10
   forceMode: 0
   jumpForce: 7
   groundMask:
@@ -213,6 +214,9 @@ MonoBehaviour:
     m_Bits: 55
   groundCheckDistance: 1.1
   groundCheckOffset: {x: 0, y: 0, z: 0}
+  maxSlopeAngle: 50
+  stepHeight: 0.35
+  stepCheckDistance: 0.3
   showGroundCheckGizmo: 1
   groundCheckGizmoSphereRadius: 0.25
 --- !u!114 &1505204059842291629
@@ -234,6 +238,29 @@ MonoBehaviour:
   sensitivityY: 0.07
   minPitch: -60
   maxPitch: 60
+--- !u!136 &4714617985758582505
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4428734790247084194}
+  m_Material: {fileID: 13400000, guid: 83bb739ab50b8a84b9ea772c2ff9c442, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1.8
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5100454848579595922
 GameObject:
   m_ObjectHideFlags: 0

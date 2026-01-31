@@ -11,8 +11,17 @@ public class PhysicsBasedMovement : MonoBehaviour
     [Header("Jump")]
     [SerializeField] private float jumpForce = 7f;
     [SerializeField] private LayerMask groundMask = ~0;
-    [SerializeField] private float groundCheckDistance = 0.2f;
+    [Tooltip("Длина луча вниз от точки проверки (должна доставать до земли при pivot в центре).")]
+    [SerializeField] private float groundCheckDistance = 1.2f;
     [SerializeField] private Vector3 groundCheckOffset = Vector3.zero;
+
+    [Header("Склоны и ступеньки")]
+    [Tooltip("Макс. угол склона в градусах, по которому можно идти (0 = только пол, 90 = любая стена).")]
+    [SerializeField, Range(0f, 85f)] private float maxSlopeAngle = 50f;
+    [Tooltip("Высота ступеньки, на которую можно подняться.")]
+    [SerializeField] private float stepHeight = 0.35f;
+    [Tooltip("Дистанция проверки ступеньки вперёд.")]
+    [SerializeField] private float stepCheckDistance = 0.3f;
 
     [Header("Debug (Gizmo)")]
     [SerializeField] private bool showGroundCheckGizmo = true;
@@ -21,6 +30,7 @@ public class PhysicsBasedMovement : MonoBehaviour
     private Rigidbody _rigidbody;
     private IMovementInput _input;
     private bool _shouldJumpThisFixedFrame;
+    private RaycastHit _groundHit;
 
     private void Awake()
     {
@@ -44,58 +54,88 @@ public class PhysicsBasedMovement : MonoBehaviour
     {
         if (_input == null) return;
 
+        bool grounded = GetGroundHit(out _groundHit);
+        bool slopeOk = grounded && _groundHit.normal.sqrMagnitude > 0.01f
+            && Vector3.Angle(Vector3.up, _groundHit.normal) <= maxSlopeAngle;
+
         Vector3 moveDir = _input.MoveDirection;
-        if (moveDir.sqrMagnitude > 0.01f)
+        if (moveDir.sqrMagnitude > 0.01f && slopeOk)
         {
             moveDir.Normalize();
             Vector3 worldDir = transform.TransformDirection(moveDir);
             worldDir.y = 0f;
             worldDir.Normalize();
 
+            TryStepUp(worldDir);
+
+            Vector3 slopeDir = Vector3.ProjectOnPlane(worldDir, _groundHit.normal).normalized;
+            if (slopeDir.sqrMagnitude < 0.01f)
+                slopeDir = worldDir;
+
             switch (forceMode)
             {
                 case ForceMode.Force:
-                    _rigidbody.AddForce(worldDir * (moveSpeed * _rigidbody.mass));
-                    ClampHorizontalVelocity(moveSpeed);
+                    _rigidbody.AddForce(slopeDir * (moveSpeed * _rigidbody.mass));
+                    ClampVelocity(moveSpeed);
                     break;
                 case ForceMode.Acceleration:
-                    _rigidbody.AddForce(worldDir * moveSpeed, ForceMode.Acceleration);
-                    ClampHorizontalVelocity(moveSpeed);
+                    _rigidbody.AddForce(slopeDir * moveSpeed, ForceMode.Acceleration);
+                    ClampVelocity(moveSpeed);
                     break;
                 case ForceMode.Impulse:
-                    _rigidbody.AddForce(worldDir * (moveSpeed * _rigidbody.mass), ForceMode.Impulse);
+                    _rigidbody.AddForce(slopeDir * (moveSpeed * _rigidbody.mass), ForceMode.Impulse);
                     break;
                 case ForceMode.VelocityChange:
-                    Vector3 vel = _rigidbody.linearVelocity;
-                    vel.x = worldDir.x * moveSpeed;
-                    vel.z = worldDir.z * moveSpeed;
-                    _rigidbody.linearVelocity = vel;
+                    _rigidbody.linearVelocity = slopeDir * moveSpeed;
                     break;
             }
         }
 
-        if (_shouldJumpThisFixedFrame && IsGrounded())
+        if (_shouldJumpThisFixedFrame && grounded && slopeOk)
         {
             _rigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
         _shouldJumpThisFixedFrame = false;
     }
 
-    private void ClampHorizontalVelocity(float maxSpeed)
+    private void ClampVelocity(float maxSpeed)
     {
         Vector3 vel = _rigidbody.linearVelocity;
-        vel.y = 0f;
         if (vel.sqrMagnitude > maxSpeed * maxSpeed)
-        {
-            vel = vel.normalized * maxSpeed;
-            _rigidbody.linearVelocity = new Vector3(vel.x, _rigidbody.linearVelocity.y, vel.z);
-        }
+            _rigidbody.linearVelocity = vel.normalized * maxSpeed;
     }
 
-    private bool IsGrounded()
+    private bool GetGroundHit(out RaycastHit hit)
     {
         Vector3 origin = transform.position + groundCheckOffset;
-        return Physics.Raycast(origin, Vector3.down, groundCheckDistance, groundMask);
+        if (Physics.Raycast(origin, Vector3.down, out hit, groundCheckDistance, groundMask))
+            return true;
+        hit = default;
+        return false;
+    }
+
+    private void TryStepUp(Vector3 worldDir)
+    {
+        Vector3 origin = transform.position + groundCheckOffset;
+        float ourGroundY = _groundHit.point.y;
+
+        Vector3 stepStart = origin + worldDir * stepCheckDistance;
+        if (!Physics.Raycast(stepStart, Vector3.down, out RaycastHit stepStartHit, groundCheckDistance * 2f, groundMask))
+            return;
+        float stepGroundY = stepStartHit.point.y;
+        if (stepGroundY <= ourGroundY + 0.05f)
+            return;
+
+        float stepUp = stepGroundY - ourGroundY;
+        if (stepUp > stepHeight)
+            return;
+
+        Vector3 stepTop = origin + Vector3.up * stepHeight + worldDir * stepCheckDistance;
+        if (!Physics.Raycast(stepTop, Vector3.down, out RaycastHit stepHit, stepHeight + groundCheckDistance, groundMask))
+            return;
+        if (Vector3.Angle(Vector3.up, stepHit.normal) > maxSlopeAngle)
+            return;
+        _rigidbody.MovePosition(_rigidbody.position + Vector3.up * stepUp);
     }
 
 #if UNITY_EDITOR
