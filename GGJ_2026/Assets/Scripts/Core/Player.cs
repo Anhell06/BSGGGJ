@@ -31,6 +31,11 @@ public class Player : MonoBehaviour
 
     public void SwitchCamera()
     {
+        if (PhotographerMode)
+            Game.Instance.ScreenController.PopScreen();
+        else
+            Game.Instance.ScreenController.PushScreen<CameraScreen>();
+
         PhotographerMode = !PhotographerMode;
         PhysicsBasedMovement.enabled = !PhotographerMode;
         //InputSystemMovementInput.enabled = !PhotographerMode;

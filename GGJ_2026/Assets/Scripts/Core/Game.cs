@@ -24,7 +24,7 @@ public class Game : MonoBehaviour
 
         _instance = this;
         DontDestroyOnLoad(gameObject);
-        ScreenController.PushScreen<MainMenuScreen>();
+        ScreenController.PushScreen<MainMenuScreen>(showCursor: true);
     }
 
     private void OnDestroy()
