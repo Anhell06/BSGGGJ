@@ -108,7 +108,8 @@ public class PhysicsBasedMovement : MonoBehaviour
     private bool GetGroundHit(out RaycastHit hit)
     {
         Vector3 origin = transform.position + groundCheckOffset;
-        if (Physics.Raycast(origin, Vector3.down, out hit, groundCheckDistance, groundMask))
+
+        if (Physics.SphereCast(origin, 0.3f, Vector3.down, out hit, groundCheckDistance, groundMask))
             return true;
         hit = default;
         return false;

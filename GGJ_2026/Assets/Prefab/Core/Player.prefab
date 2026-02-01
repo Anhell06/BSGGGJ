@@ -347,7 +347,7 @@ MonoBehaviour:
     m_Bits: 55
   groundCheckDistance: 1.1
   groundCheckOffset: {x: 0, y: 0, z: 0}
-  maxSlopeAngle: 50
+  maxSlopeAngle: 85
   stepHeight: 0.35
   stepCheckDistance: 0.3
   showGroundCheckGizmo: 1
