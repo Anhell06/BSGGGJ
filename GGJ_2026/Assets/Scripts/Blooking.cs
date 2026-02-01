@@ -18,8 +18,16 @@ public class Blooking : Screen
     [Button]
     public void AddPhotoCard(List<PhotoCard> photoCard)
     {
+        foreach (var item in PhotoCardViews)
+        {
+            item.PhotoCard = null;
+            item.gameObject.SetActive(false);
+        }
+
         for (var i = 0; i < photoCard.Count && i < PhotoCardViews.Count; i++)
         {
+            PhotoCardViews[i].gameObject.SetActive(true);
+
             PhotoCardViews[i].PhotoCard = photoCard[i];
             PhotoCardViews[i].SetImage(photoCard[i].texture2D, photoCard[i].rating, name);
         }

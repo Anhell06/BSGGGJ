@@ -43,7 +43,7 @@ public class PhotoAlbum : MonoBehaviour
         {
             if (!item.gameObject.activeSelf)
             {
-                item.SetImage(photoCard.texture2D, photoCard.rating, name);
+                item.SetImage(photoCard.texture2D, photoCard.rating, name, photoCard.dataTexture2D);
                 item.PhotoCard = photoCard;
                 item.gameObject.SetActive(true);
                 _activePhotoCount++;
