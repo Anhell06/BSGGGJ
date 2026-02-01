@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class PhotoTarget : MonoBehaviour
 {
-    [SerializeField]//[HideInInspector]
+    [SerializeField][HideInInspector]
     private Color _color;
 
-    [SerializeField][HideInInspector]
+    [SerializeField]
     private Renderer _renderer;
 
     [SerializeField][HideInInspector]

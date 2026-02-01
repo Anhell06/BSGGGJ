@@ -9,13 +9,16 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8112420036293820436}
+  - component: {fileID: 5410702389902297852}
+  - component: {fileID: 6800748164013872232}
+  - component: {fileID: 8065955634235869528}
   - component: {fileID: 7894545089417121687}
   - component: {fileID: 6815662670672084080}
   - component: {fileID: 2279150891296682109}
-  - component: {fileID: 8065955634235869528}
   - component: {fileID: 1646653372366839610}
+  - component: {fileID: 420476914400953196}
   m_Layer: 0
-  m_Name: Racoon
+  m_Name: Raccoon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36,6 +39,56 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5410702389902297852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 115152029826577315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12358fc1f3991244ab51103c37e39267, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PhotoTarget
+  _color: {r: 1, g: 0.35985628, b: 0.3537736, a: 1}
+  _renderer: {fileID: 6815662670672084080}
+  _rating: -2
+--- !u!114 &6800748164013872232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 115152029826577315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eeb41a82c65d73a48996cdc93a3e1b63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Raccoon
+  _raccoonPlaceable: {fileID: 8065955634235869528}
+  _agent: {fileID: 420476914400953196}
+--- !u!114 &8065955634235869528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 115152029826577315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b1199eef9369bb40a0869368e404755, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlaceableItem
+  itemName: Racoon
+  description: 
+  Rigidbody: {fileID: 1646653372366839610}
+  defaultRotationEuler: {x: 0, y: 0, z: 0}
+  attachmentPoint: {fileID: 0}
+  holdSmoothTime: 0.1
+  stickToWallsWhenCarrying: 0
+  stickToWallOffset: 0.02
+  stickTwistDegrees: 0
 --- !u!33 &7894545089417121687
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -116,27 +169,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8065955634235869528
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 115152029826577315}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b1199eef9369bb40a0869368e404755, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlaceableItem
-  itemName: Racoon
-  description: 
-  Rigidbody: {fileID: 1646653372366839610}
-  defaultRotationEuler: {x: 0, y: 0, z: 0}
-  attachmentPoint: {fileID: 0}
-  holdSmoothTime: 0.1
-  stickToWallsWhenCarrying: 0
-  stickToWallOffset: 0.02
-  stickTwistDegrees: 0
 --- !u!54 &1646653372366839610
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -164,3 +196,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!195 &420476914400953196
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 115152029826577315}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 1
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
