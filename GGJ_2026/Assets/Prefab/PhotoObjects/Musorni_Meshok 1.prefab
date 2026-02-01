@@ -10,15 +10,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 98aba75b4156ea14cba687b72d6f4516, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.501
+      value: -5.452
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 98aba75b4156ea14cba687b72d6f4516, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.121999994
+      value: 0.795
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 98aba75b4156ea14cba687b72d6f4516, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.8
+      value: -0.775
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 98aba75b4156ea14cba687b72d6f4516, type: 3}
       propertyPath: m_LocalRotation.w
@@ -93,6 +93,7 @@ MonoBehaviour:
   _color: {r: 0.6981132, g: 0.4923211, b: 0, a: 1}
   _renderer: {fileID: 8716538599326961857}
   _rating: -2
+  _subObject: {fileID: 0}
 --- !u!64 &6908923423788260026
 MeshCollider:
   m_ObjectHideFlags: 0

@@ -117,9 +117,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12358fc1f3991244ab51103c37e39267, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PhotoTarget
-  _color: {r: 0.833569, g: 0.8962264, b: 0.47770557, a: 0}
+  _color: {r: 0.7735849, g: 0.48159975, b: 0.4780171, a: 1}
   _renderer: {fileID: 7055833962345470835}
   _rating: 0
+  _subObject: {fileID: 0}
 --- !u!114 &1463300825528952521
 MonoBehaviour:
   m_ObjectHideFlags: 0

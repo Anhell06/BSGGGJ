@@ -50,7 +50,7 @@ MonoBehaviour:
     prefab: {fileID: 5717436609046743980, guid: 71be265e077feed4b91369f504ba8bd8, type: 3}
   - technicalColor: {r: 0.4811321, g: 0, b: 0.12608969, a: 1}
     price: 500
-    rating: -2
+    rating: 0
     minPixels: 1
     prefab: {fileID: -4895650171950327130, guid: b2e6777f335ec8749af151184f6c0673, type: 3}
   - technicalColor: {r: 0.6981132, g: 0.4923211, b: 0, a: 1}
@@ -82,7 +82,7 @@ MonoBehaviour:
     price: -5000
     rating: -2
     minPixels: 1
-    prefab: {fileID: 5410702389902297852, guid: 8825793ade6af2543875b5f9ecf6c219, type: 3}
+    prefab: {fileID: 2218560396471969932, guid: 8825793ade6af2543875b5f9ecf6c219, type: 3}
   - technicalColor: {r: 0.7735849, g: 0.48159975, b: 0.4780171, a: 1}
     price: 200
     rating: 0
@@ -93,3 +93,8 @@ MonoBehaviour:
     rating: 0
     minPixels: 1
     prefab: {fileID: -7703424840486803161, guid: d32da84a83ef1684d9d39fec6a639dcf, type: 3}
+  - technicalColor: {r: 0.41509432, g: 0.41509432, b: 0.41509432, a: 1}
+    price: 0
+    rating: 0
+    minPixels: 1
+    prefab: {fileID: 5163356675527048331, guid: ebbca11397d82264bafc8a9fc26dda2e, type: 3}

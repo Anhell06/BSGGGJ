@@ -104,6 +104,7 @@ MonoBehaviour:
   _color: {r: 1, g: 0.010436703, b: 0, a: 1}
   _renderer: {fileID: 6967842834537338841}
   _rating: -2
+  _subObject: {fileID: 0}
 --- !u!64 &1214414449892031718
 MeshCollider:
   m_ObjectHideFlags: 0
