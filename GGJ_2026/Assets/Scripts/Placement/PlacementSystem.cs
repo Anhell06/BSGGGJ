@@ -76,12 +76,11 @@ public class PlacementSystem : MonoBehaviour
             if (_heldItem != null)
             {
                 DropHeldItem();
-                _heldItem?.OnDroped();
             }
             else
             { 
                 TryPickUp();
-                _heldItem?.OnPicked();
+                _heldItem?.OnPicked?.Invoke();
             }
         }
 
@@ -237,6 +236,8 @@ public class PlacementSystem : MonoBehaviour
 
             _heldRigidbody.useGravity = true;
         }
+        if(_heldItem != null)
+            _heldItem?.OnDroped?.Invoke();
         _heldItem = null;
         _heldRigidbody = null;
     }
