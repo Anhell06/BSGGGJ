@@ -94,6 +94,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PhotoTarget
   _color: {r: 0.4811321, g: 0, b: 0.12608969, a: 1}
   _renderer: {fileID: 5548917624423413251}
+  _rating: -2
 --- !u!64 &1509726861092052239
 MeshCollider:
   m_ObjectHideFlags: 0

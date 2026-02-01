@@ -14,6 +14,7 @@ public class PhotoTargetConfig : ScriptableObject
         foreach (var po in _photoObjects)
         {
             po.prefab.SetTechnicalColor(po.technicalColor);
+            po.prefab.SetRating(po.rating);
         }
     }
 }

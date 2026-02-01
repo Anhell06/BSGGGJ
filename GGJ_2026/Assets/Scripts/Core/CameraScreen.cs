@@ -13,7 +13,10 @@ public class CameraScreen : Screen
     {
         var player = FindFirstObjectByType<Player>();
         if (player != null)
+        {
             player.SetPhotographerMode(true);
+            ScenePhotographer.Instance.BeginHighlight();
+        }
 
     }
 
@@ -22,7 +25,10 @@ public class CameraScreen : Screen
         onHide?.Invoke();
         var player = FindFirstObjectByType<Player>();
         if (player != null)
+        {
             player.SetPhotographerMode(false);
+            ScenePhotographer.Instance.FinishHighlight();
+        }
     }
     
     public Image canFinishQuest;
