@@ -3371,6 +3371,10 @@ PrefabInstance:
       value: Rama_OK (16)
       objectReference: {fileID: 0}
     - target: {fileID: 661534555037658934, guid: ebbca11397d82264bafc8a9fc26dda2e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.2591492
+      objectReference: {fileID: 0}
+    - target: {fileID: 661534555037658934, guid: ebbca11397d82264bafc8a9fc26dda2e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.032
       objectReference: {fileID: 0}
@@ -3380,7 +3384,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 661534555037658934, guid: ebbca11397d82264bafc8a9fc26dda2e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.268
+      value: -2.2697
       objectReference: {fileID: 0}
     - target: {fileID: 661534555037658934, guid: ebbca11397d82264bafc8a9fc26dda2e, type: 3}
       propertyPath: m_LocalRotation.w

@@ -68,6 +68,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Raccoon
   _raccoonPlaceable: {fileID: 8065955634235869528}
   _agent: {fileID: 420476914400953196}
+  rb: {fileID: 0}
 --- !u!114 &8065955634235869528
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109,9 +110,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.25
-  m_Height: 1
+  m_Height: 0.5
   m_Direction: 1
-  m_Center: {x: 0, y: 0.5, z: 0}
+  m_Center: {x: 0, y: 0.4, z: 0}
 --- !u!54 &1646653372366839610
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -124,7 +125,7 @@ Rigidbody:
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaTensor: {x: 0, y: 0, z: 0}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
   m_IncludeLayers:
     serializedVersion: 2
@@ -133,8 +134,8 @@ Rigidbody:
     serializedVersion: 2
     m_Bits: 0
   m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_ImplicitTensor: 0
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 80
@@ -148,14 +149,14 @@ NavMeshAgent:
   m_GameObject: {fileID: 115152029826577315}
   m_Enabled: 1
   m_AgentTypeID: -1372625422
-  m_Radius: 0.25
+  m_Radius: 0.15
   m_Speed: 1.5
-  m_Acceleration: 6
+  m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
+  m_AutoBraking: 0
   m_AutoRepath: 1
   m_Height: 1
   m_BaseOffset: 0.5
@@ -228,6 +229,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e05255b0a5babd742a179452e19e79ae, type: 3}
       insertIndex: 1
       addedObject: {fileID: 3271418947317718878}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e05255b0a5babd742a179452e19e79ae, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2181009815639551106}
   m_SourcePrefab: {fileID: 100100000, guid: e05255b0a5babd742a179452e19e79ae, type: 3}
 --- !u!1 &6966312836607011121 stripped
 GameObject:
@@ -250,6 +254,28 @@ MonoBehaviour:
   _renderer: {fileID: 8911969374002989284}
   _rating: -2
   _subObject: {fileID: 0}
+--- !u!95 &2181009815639551106
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6966312836607011121}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b5483b0c4d1c84b4d8c5716417148e0f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!4 &7775042755692344203 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e05255b0a5babd742a179452e19e79ae, type: 3}

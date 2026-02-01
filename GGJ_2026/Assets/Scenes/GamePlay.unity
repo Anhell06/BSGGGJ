@@ -4946,7 +4946,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.083333336
+  m_VoxelSize: 0.05
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: ce18b29569554af439f543c5801684bb, type: 2}
   m_BuildHeightMesh: 0
@@ -6619,6 +6619,18 @@ PrefabInstance:
     - target: {fileID: 115152029826577315, guid: 8825793ade6af2543875b5f9ecf6c219, type: 3}
       propertyPath: m_Name
       value: Raccoon
+      objectReference: {fileID: 0}
+    - target: {fileID: 2279150891296682109, guid: 8825793ade6af2543875b5f9ecf6c219, type: 3}
+      propertyPath: m_Height
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2279150891296682109, guid: 8825793ade6af2543875b5f9ecf6c219, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2279150891296682109, guid: 8825793ade6af2543875b5f9ecf6c219, type: 3}
+      propertyPath: m_Center.y
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 8112420036293820436, guid: 8825793ade6af2543875b5f9ecf6c219, type: 3}
       propertyPath: m_LocalPosition.x

@@ -11,6 +11,9 @@ public class Raccoon : MonoBehaviour
     [SerializeField]
     private NavMeshAgent _agent;
 
+    [SerializeField]
+    private Rigidbody rb;
+
     private IEnumerator Start()
     {
         yield return null;
@@ -30,17 +33,20 @@ public class Raccoon : MonoBehaviour
         yield return null;
         _agent.enabled = true;
         _agent.SetDestination(RaccoonTarget.Instance.transform.position);
+        _raccoonPlaceable.Rigidbody.isKinematic = true;
     }
 
     private void Update()
     {
         if(_agent.enabled)
-        _agent.SetDestination(RaccoonTarget.Instance.transform.position);
+            _agent.SetDestination(RaccoonTarget.Instance.transform.position);
     }
 
     private void NoNoNo()
     {
         _agent.enabled = false;
+        rb = this.gameObject.AddComponent<Rigidbody>();
+        _raccoonPlaceable.Rigidbody.isKinematic = false;
     }
     
     
