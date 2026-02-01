@@ -3476,6 +3476,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 831579529}
     m_Modifications:
+    - target: {fileID: 2458637823363254847, guid: 40f6f9554fb29364a9b2d26f84dd7a18, type: 3}
+      propertyPath: _renderer
+      value: 
+      objectReference: {fileID: 1000999922}
     - target: {fileID: 8216275212057641719, guid: 40f6f9554fb29364a9b2d26f84dd7a18, type: 3}
       propertyPath: m_Name
       value: Carpet (1)
@@ -3528,6 +3532,11 @@ PrefabInstance:
 --- !u!4 &1000999915 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8740856214822017101, guid: 40f6f9554fb29364a9b2d26f84dd7a18, type: 3}
+  m_PrefabInstance: {fileID: 1000999914}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &1000999922 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 7567998690252858146, guid: 40f6f9554fb29364a9b2d26f84dd7a18, type: 3}
   m_PrefabInstance: {fileID: 1000999914}
   m_PrefabAsset: {fileID: 0}
 --- !u!21 &1008316427
