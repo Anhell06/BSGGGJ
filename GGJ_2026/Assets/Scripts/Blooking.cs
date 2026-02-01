@@ -11,8 +11,14 @@ public class Blooking : Screen
     public TMP_Text price;
     private void OnEnable()
     {
-        AddPhotoCard(Game.Instance.Profile.PhotoCards.OrderBy(p => p.price * p.rating).Take(PhotoCardViews.Count).ToList());
-        price.text = "Final price: " + PhotoCardViews.Where(p => p.PhotoCard != null).Sum(p => p.PhotoCard.price).ToString();
+        var photoCards = Game.Instance.Profile.PhotoCards
+            .Where(p => p != null && p.finishQuest != QuestId.None)
+            .GroupBy(p => p.finishQuest)
+            .Select(p => p.OrderBy(p => p.price * Mathf.Max(1, p.rating)).First())
+            .ToList();
+
+        AddPhotoCard(photoCards);
+        price.text = "Final price: " + photoCards.Sum(p => p.price).ToString();
     }
 
     [Button]
