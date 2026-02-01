@@ -1,16 +1,20 @@
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class CameraScreen : Screen
 {
     public event Action onHide;
+    public TMP_Text countPhoto;
+    public GameObject NoFreeSpace;
 
     protected override void OnShow()
     {
         var player = FindFirstObjectByType<Player>();
         if (player != null)
             player.SetPhotographerMode(true);
+
     }
 
     protected override void OnHide()
@@ -29,5 +33,7 @@ public class CameraScreen : Screen
         var clr = canFinishQuest.color;
         clr.a = 0.2f;
         canFinishQuest.color = clr;
+        countPhoto.text = $"{Game.Instance.Profile.PhotoCards.Count}/12";
+        NoFreeSpace.SetActive(Game.Instance.Profile.PhotoCards.Count >= 12);
     }
 }

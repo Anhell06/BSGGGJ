@@ -26,6 +26,7 @@ public class Game : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    public void Exit() => Application.Quit();
     private void Start()
     {
         ScreenController.PushScreen<MainMenuScreen>(showCursor: true);

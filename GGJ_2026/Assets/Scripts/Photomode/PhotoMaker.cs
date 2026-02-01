@@ -6,12 +6,14 @@ using System.Collections;
 public class PhotoMaker : MonoBehaviour
 {
     public Camera targetCamera;
-    
+    private readonly int _maxPhoto = 12;
+
     private RenderTexture visibilityRT;
     private RenderTexture photoRT;
     private Texture2D dataTexture;
     private Texture2D photoTexture;
     private Dictionary<int, int> pixelsCount = new Dictionary<int, int>();
+    [SerializeField] private CameraFlashEffect flash;
 
 
     [SerializeField]
@@ -34,7 +36,11 @@ public class PhotoMaker : MonoBehaviour
             Debug.LogError("CheckVisibility available only in Play Mode!");
             return;
         }
-        StartCoroutine(MakePhotoCoroutine());
+
+        if (Game.Instance.Profile.PhotoCards.Count < _maxPhoto)
+        {
+            StartCoroutine(MakePhotoCoroutine());
+        }
     }
 
     private IEnumerator MakePhotoCoroutine()
@@ -52,6 +58,9 @@ public class PhotoMaker : MonoBehaviour
         //targetCamera.clearFlags = CameraClearFlags.SolidColor;
         //targetCamera.backgroundColor = Color.black;
         targetCamera.targetTexture = visibilityRT;
+
+        if (flash != null)
+            flash.PlayFlash();
 
         sp.Prepare();
         targetCamera.Render();
