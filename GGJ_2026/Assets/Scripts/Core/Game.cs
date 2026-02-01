@@ -30,6 +30,7 @@ public class Game : MonoBehaviour
     }
 
     public void Exit() => Application.Quit();
+    public void Replay() => SceneManager.LoadScene("init", LoadSceneMode.Single);
     private void Start()
     {
         ScreenController.PushScreen<MainMenuScreen>(showCursor: true);
