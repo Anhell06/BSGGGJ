@@ -24,7 +24,7 @@ public class QuestMarker : MonoBehaviour
             return false;
         }
 
-        var cameraOrigin = camera.transform.position + camera.transform.forward;
+        var cameraOrigin = camera.transform.position;
         var direction = transform.position - cameraOrigin;
         if (Physics.Raycast(cameraOrigin, direction, out var hitInfo, 100, LayerMask.GetMask("Default", "TempVisibility")))
         {

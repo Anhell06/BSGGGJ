@@ -468,7 +468,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RandomRotation
   xRange: {x: 0, y: 0}
   yRange: {x: 0, y: 0}
-  zRange: {x: 15, y: -15}
+  zRange: {x: 0, y: 0}
   applyOnAwake: 1
   useLocalRotation: 1
 --- !u!114 &7947068094245258359
