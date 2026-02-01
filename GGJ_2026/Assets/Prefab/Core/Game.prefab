@@ -3717,6 +3717,10 @@ PrefabInstance:
       propertyPath: WinScreen
       value: 
       objectReference: {fileID: 4554286573556256525}
+    - target: {fileID: 7992916451245621677, guid: edcd78d67e5e034489019bf513ba3024, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
