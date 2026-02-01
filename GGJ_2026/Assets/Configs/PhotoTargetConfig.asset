@@ -73,3 +73,8 @@ MonoBehaviour:
     rating: -2
     minPixels: 1
     prefab: {fileID: 5717436609046743980, guid: ac1894e88bf1625408f68c4b3a6d87f4, type: 3}
+  - technicalColor: {r: 0.5447777, g: 0.28568888, b: 0.5660378, a: 1}
+    price: -1000
+    rating: -2
+    minPixels: 1
+    prefab: {fileID: 7750306078389698273, guid: 5d5edc651108aac4eb0b4f23f916e63d, type: 3}
