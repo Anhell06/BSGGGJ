@@ -7,6 +7,7 @@ using UnityEngine;
 public class Blooking : Screen
 {
     public List<PhotoCardView> PhotoCardViews;
+    public GameObject WinScreen;
     public TMP_Text price;
     private void OnEnable()
     {
@@ -23,6 +24,15 @@ public class Blooking : Screen
             PhotoCardViews[i].SetImage(photoCard[i].texture2D, photoCard[i].rating, name);
         }
     }
+
+    public void ShowWinScreen()
+    {
+        var allcards = PhotoCardViews.All(p => p.PhotoCard != null);
+
+        if (allcards && PhotoCardViews.Sum(p => p.PhotoCard.price) > 0 && PhotoCardViews.Sum(p => p.PhotoCard.rating) > 6)
+            WinScreen.SetActive(true);
+    }
+
     protected override void OnShow()
     {
         var player = FindFirstObjectByType<Player>();
