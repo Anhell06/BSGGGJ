@@ -9,6 +9,8 @@ public class Blooking : Screen
     public List<PhotoCardView> PhotoCardViews;
     public GameObject WinScreen;
     public TMP_Text price;
+    public TMP_Text priceEndScreen;
+
     private void OnEnable()
     {
         var photoCards = Game.Instance.Profile.PhotoCards
@@ -18,7 +20,8 @@ public class Blooking : Screen
             .ToList();
 
         AddPhotoCard(photoCards);
-        price.text = "Final price: " + photoCards.Sum(p => p.price).ToString();
+        price.text = "Final price: " + photoCards.Sum(p => p.price).ToString() + "$";
+        priceEndScreen.text = price.text;
     }
 
     [Button]

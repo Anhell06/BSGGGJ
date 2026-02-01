@@ -3467,6 +3467,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5902510865788255175}
     m_Modifications:
+    - target: {fileID: 635912051583734011, guid: edcd78d67e5e034489019bf513ba3024, type: 3}
+      propertyPath: m_Name
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 1536264603541036040, guid: edcd78d67e5e034489019bf513ba3024, type: 3}
       propertyPath: m_Name
       value: Blookong
@@ -3543,6 +3547,10 @@ PrefabInstance:
       propertyPath: WinScreen
       value: 
       objectReference: {fileID: 4554286573556256525}
+    - target: {fileID: 5145350603841305293, guid: edcd78d67e5e034489019bf513ba3024, type: 3}
+      propertyPath: priceEndScreen
+      value: 
+      objectReference: {fileID: 1180230155973886192}
     - target: {fileID: 7992916451245621677, guid: edcd78d67e5e034489019bf513ba3024, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -3552,6 +3560,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: edcd78d67e5e034489019bf513ba3024, type: 3}
+--- !u!114 &1180230155973886192 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4735989908265422416, guid: edcd78d67e5e034489019bf513ba3024, type: 3}
+  m_PrefabInstance: {fileID: 5897631560671809184}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!4 &1282314693429149909 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4617081061030104693, guid: edcd78d67e5e034489019bf513ba3024, type: 3}
