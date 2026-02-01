@@ -338,22 +338,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 210643566871893331, guid: e21f5962cab62034ba280e0321b41fbb, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 210643566871893331, guid: e21f5962cab62034ba280e0321b41fbb, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 210643566871893331, guid: e21f5962cab62034ba280e0321b41fbb, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 210643566871893331, guid: e21f5962cab62034ba280e0321b41fbb, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4349785410573117014, guid: e21f5962cab62034ba280e0321b41fbb, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.13238
@@ -392,22 +376,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4349785410573117014, guid: e21f5962cab62034ba280e0321b41fbb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6109604163107025847, guid: e21f5962cab62034ba280e0321b41fbb, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6109604163107025847, guid: e21f5962cab62034ba280e0321b41fbb, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6109604163107025847, guid: e21f5962cab62034ba280e0321b41fbb, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6109604163107025847, guid: e21f5962cab62034ba280e0321b41fbb, type: 3}
-      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7451373781738119021, guid: e21f5962cab62034ba280e0321b41fbb, type: 3}
