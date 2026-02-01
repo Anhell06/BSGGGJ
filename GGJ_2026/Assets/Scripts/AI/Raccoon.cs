@@ -21,6 +21,13 @@ public class Raccoon : MonoBehaviour
 
     private void GoGoGo()
     {
+        StartCoroutine(GoGoGoRoutine());
+    }
+
+    private IEnumerator GoGoGoRoutine()
+    {
+        _agent.enabled = true;
+        yield return null;
         _agent.enabled = true;
         _agent.SetDestination(RaccoonTarget.Instance.transform.position);
     }

@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class PhotoTarget : MonoBehaviour
 {
-    [SerializeField][HideInInspector]
+    [SerializeField]//[HideInInspector]
     private Color _color;
 
     [SerializeField]
     private Renderer _renderer;
 
-    [SerializeField][HideInInspector]
+    [SerializeField]//[HideInInspector]
     private int _rating = 0;
 
     public void SetTechnicalColor(Color color)
