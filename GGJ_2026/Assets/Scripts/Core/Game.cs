@@ -1,4 +1,8 @@
+using UnityEditor.SceneManagement;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class Game : MonoBehaviour
 {
@@ -30,11 +34,33 @@ public class Game : MonoBehaviour
     private void Start()
     {
         ScreenController.PushScreen<MainMenuScreen>(showCursor: true);
+#if !UNITY_EDITOR
+        LoadScene();
+#endif
     }
 
     private void OnDestroy()
     {
         if (_instance == this)
             _instance = null;
+    }
+
+    private void LoadScene()
+    {
+        var sceneCount = SceneManager.sceneCountInBuildSettings;
+
+        Scene lastLoadedScene = default;
+
+        for (var i = 0; i < sceneCount; i++)
+        {
+            SceneManager.LoadScene(i, LoadSceneMode.Additive);
+
+            lastLoadedScene = SceneManager.GetSceneByBuildIndex(i);
+        }
+
+        if (lastLoadedScene.IsValid())
+        {
+            SceneManager.SetActiveScene(lastLoadedScene);
+        }
     }
 }
