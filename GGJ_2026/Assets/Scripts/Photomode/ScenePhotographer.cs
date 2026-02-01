@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class ScenePhotographer : MonoBehaviour
 {
+    public static ScenePhotographer Instance { get; private set; }
     [SerializeField]
     private List<ScenePhotoObjectData> _photoObjects = new List<ScenePhotoObjectData>();
 
     [SerializeField]
     private Material _photoMaterial;
-    
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     public void CollectSceneData()
     {
         Restore();
@@ -23,6 +29,28 @@ public class ScenePhotographer : MonoBehaviour
             data.materials.AddRange(data.renderer.sharedMaterials);
             data.photoTarget = renderer.GetComponent<PhotoTarget>();
             _photoObjects.Add(data);
+        }
+    }
+
+    public void BeginHighlight()
+    {
+        foreach (var po in _photoObjects)
+        {
+            if (po.photoTarget != null)
+            {
+                po.photoTarget.BeginHighlight();
+            }
+        }
+    }
+    
+    public void FinishHighlight()
+    {
+        foreach (var po in _photoObjects)
+        {
+            if (po.photoTarget != null)
+            {
+                po.photoTarget.FinishHighlight();
+            }
         }
     }
 
