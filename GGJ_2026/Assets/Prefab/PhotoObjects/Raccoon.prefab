@@ -183,19 +183,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e05255b0a5babd742a179452e19e79ae, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e05255b0a5babd742a179452e19e79ae, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.7071068
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e05255b0a5babd742a179452e19e79ae, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e05255b0a5babd742a179452e19e79ae, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e05255b0a5babd742a179452e19e79ae, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -203,7 +203,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e05255b0a5babd742a179452e19e79ae, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e05255b0a5babd742a179452e19e79ae, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -247,7 +247,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PhotoTarget
   _color: {r: 1, g: 0.35985628, b: 0.3537736, a: 1}
-  _renderer: {fileID: 0}
+  _renderer: {fileID: 8911969374002989284}
   _rating: -2
   _subObject: {fileID: 0}
 --- !u!4 &7775042755692344203 stripped
