@@ -134,8 +134,13 @@ public class PlacementSystem : MonoBehaviour
                 targetRot = Quaternion.AngleAxis(_heldItem.StickTwistDegrees, hit.normal) * targetRot;
         }
 
+        targetRot = targetRot * Quaternion.Euler(_heldItem.DefaultRotationEuler);
+
+        Vector3 localAttach = _heldItem.AttachmentPoint != null ? _heldItem.AttachmentPoint.localPosition : Vector3.zero;
+        Vector3 targetTransformPos = targetPos - (targetRot * localAttach);
+
         Vector3 currentPos = _heldItem.transform.position;
-        _heldItem.transform.position = Vector3.MoveTowards(currentPos, targetPos, holdMoveSpeed * Time.deltaTime);
+        _heldItem.transform.position = Vector3.MoveTowards(currentPos, targetTransformPos, holdMoveSpeed * Time.deltaTime);
         _heldItem.transform.rotation = Quaternion.Slerp(
             _heldItem.transform.rotation,
             targetRot,
