@@ -44,6 +44,32 @@ public class QuestHolder: MonoBehaviour
     }
 }
 
+public static class QuestIdExtensions
+{
+    public static string ToQuestName(this QuestId q)
+	{
+        switch (q)
+        {
+            case QuestId.Quest01:
+                return "Facade";
+            case QuestId.Quest02:
+                return "Courtyard";
+            case QuestId.Quest03:
+                return "Kitchen";
+            case QuestId.Quest04:
+                return "Basement";
+            case QuestId.Quest05:
+                return "Living room";
+            case QuestId.Quest06:
+                return "Bedroom";
+            case QuestId.Quest07:
+                return "Bedroom";
+            default:
+                return "Photo";
+
+        }
+    }
+}
 public enum QuestId
 {
     Quest01 = 1,

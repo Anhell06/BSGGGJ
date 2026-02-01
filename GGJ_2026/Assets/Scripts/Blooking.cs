@@ -29,7 +29,7 @@ public class Blooking : Screen
             PhotoCardViews[i].gameObject.SetActive(true);
 
             PhotoCardViews[i].PhotoCard = photoCard[i];
-            PhotoCardViews[i].SetImage(photoCard[i].texture2D, photoCard[i].rating, name);
+            PhotoCardViews[i].SetImage(photoCard[i].texture2D, photoCard[i].rating, photoCard[i].finishQuest.ToQuestName());
         }
     }
 
