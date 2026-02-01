@@ -32,6 +32,12 @@ public class Raccoon : MonoBehaviour
         _agent.SetDestination(RaccoonTarget.Instance.transform.position);
     }
 
+    private void Update()
+    {
+        if(_agent.enabled)
+        _agent.SetDestination(RaccoonTarget.Instance.transform.position);
+    }
+
     private void NoNoNo()
     {
         _agent.enabled = false;
