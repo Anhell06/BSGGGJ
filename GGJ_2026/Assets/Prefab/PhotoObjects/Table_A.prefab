@@ -68,9 +68,6 @@ PrefabInstance:
       addedObject: {fileID: 1509726861092052239}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c07b5306911a7e842a8ee34c041f2a9e, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1545674834265343999}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c07b5306911a7e842a8ee34c041f2a9e, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 6023826796802591304}
   m_SourcePrefab: {fileID: 100100000, guid: c07b5306911a7e842a8ee34c041f2a9e, type: 3}
 --- !u!23 &5548917624423413251 stripped
@@ -119,27 +116,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -3292925553009838691, guid: c07b5306911a7e842a8ee34c041f2a9e, type: 3}
---- !u!114 &1545674834265343999
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6197317429958727638}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b1199eef9369bb40a0869368e404755, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlaceableItem
-  itemName: "\u041F\u0440\u0435\u0434\u043C\u0435\u0442"
-  description: 
-  Rigidbody: {fileID: 6023826796802591304}
-  defaultRotationEuler: {x: -90, y: 0, z: 0}
-  attachmentPoint: {fileID: 0}
-  holdSmoothTime: 0.1
-  stickToWallsWhenCarrying: 0
-  stickToWallOffset: 0.02
-  stickTwistDegrees: 0
 --- !u!54 &6023826796802591304
 Rigidbody:
   m_ObjectHideFlags: 0
