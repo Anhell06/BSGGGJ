@@ -98,6 +98,7 @@ MonoBehaviour:
   _color: {r: 0.119199276, g: 1, b: 0, a: 1}
   _renderer: {fileID: 2761656069850127112}
   _rating: 1
+  _subObject: {fileID: 0}
 --- !u!114 &4376161383244863904
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -12,6 +12,9 @@ public class PhotoTarget : MonoBehaviour
 
     [SerializeField]//[HideInInspector]
     private int _rating = 0;
+    
+    [SerializeField]
+    private GameObject _subObject;
 
     public void SetTechnicalColor(Color color)
     {
@@ -25,11 +28,15 @@ public class PhotoTarget : MonoBehaviour
 
     public void Prepare()
     {
+        if(_subObject != null)
+            _subObject.gameObject.SetActive(false);
         _renderer.material.color = _color;
     }
 
     public void Restore()
     {
+        if(_subObject != null)
+            _subObject.gameObject.SetActive(true);
         _renderer.material.color = Color.white;
     }
 

@@ -53,6 +53,7 @@ MonoBehaviour:
   _color: {r: 1, g: 0.35985628, b: 0.3537736, a: 1}
   _renderer: {fileID: 8274907417533971533}
   _rating: -2
+  _subObject: {fileID: 0}
 --- !u!114 &6800748164013872232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,8 +149,8 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: -1372625422
   m_Radius: 0.25
-  m_Speed: 2
-  m_Acceleration: 8
+  m_Speed: 1.5
+  m_Acceleration: 6
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 0
@@ -266,3 +267,4 @@ MonoBehaviour:
   _color: {r: 1, g: 0.35985628, b: 0.3537736, a: 1}
   _renderer: {fileID: 8274907417533971533}
   _rating: -2
+  _subObject: {fileID: 0}
