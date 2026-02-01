@@ -9,6 +9,7 @@ public class PhotoCardView : MonoBehaviour
 {
     public PhotoCard PhotoCard { get; set; }
     [SerializeField] private Image _image;
+    [SerializeField] private Image _mask;
     [SerializeField] private List<GameObject> _stars;
     [SerializeField] private TMP_Text _name;
     [SerializeField] private Button _button;
@@ -21,7 +22,7 @@ public class PhotoCardView : MonoBehaviour
     }
 
     [Button]
-    public void SetImage(Texture2D texture2D, int star, string name)
+    public void SetImage(Texture2D texture2D, int star, string name, Texture2D mask = null)
     {
         var sprite = Texture2DToSprite(texture2D);
 
@@ -32,6 +33,16 @@ public class PhotoCardView : MonoBehaviour
 
         _image.sprite = sprite;
         _image.enabled = sprite != null;
+
+        if (_mask != null & mask != null)
+        {
+            _mask.sprite = Texture2DToSprite(mask);
+            _mask.enabled = true;
+        }
+        else if (_mask != null)
+        {
+            _mask.enabled = false;
+        }
     }
 
     private static Sprite Texture2DToSprite(Texture2D tex)
