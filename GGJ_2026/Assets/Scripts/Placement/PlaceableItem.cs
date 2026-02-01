@@ -1,4 +1,6 @@
 using UnityEngine;
+using System;
+
 #if UNITY_EDITOR
 using Sirenix.OdinInspector;
 #endif
@@ -9,6 +11,9 @@ using Sirenix.OdinInspector;
 /// </summary>
 public class PlaceableItem : MonoBehaviour
 {
+    public Action OnPicked;
+    public Action OnDroped;
+
     [Header("Идентификация")]
     [Tooltip("Название предмета для UI и отладки.")]
     [SerializeField] private string itemName = "Предмет";

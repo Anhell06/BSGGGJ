@@ -74,9 +74,15 @@ public class PlacementSystem : MonoBehaviour
         {
             _interactPressedThisFrame = false;
             if (_heldItem != null)
+            {
                 DropHeldItem();
+                _heldItem?.OnDroped();
+            }
             else
+            { 
                 TryPickUp();
+                _heldItem?.OnPicked();
+            }
         }
 
         if (_heldItem != null)
