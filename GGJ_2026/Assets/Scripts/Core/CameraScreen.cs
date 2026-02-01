@@ -7,6 +7,7 @@ public class CameraScreen : Screen
 {
     public event Action onHide;
     public TMP_Text countPhoto;
+    public GameObject NoFreeSpace;
 
     protected override void OnShow()
     {
@@ -33,5 +34,6 @@ public class CameraScreen : Screen
         clr.a = 0.2f;
         canFinishQuest.color = clr;
         countPhoto.text = $"{Game.Instance.Profile.PhotoCards.Count}/12";
+        NoFreeSpace.SetActive(Game.Instance.Profile.PhotoCards.Count >= 12);
     }
 }
