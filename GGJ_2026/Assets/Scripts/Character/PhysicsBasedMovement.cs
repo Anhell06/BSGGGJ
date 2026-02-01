@@ -59,7 +59,7 @@ public class PhysicsBasedMovement : MonoBehaviour
             && Vector3.Angle(Vector3.up, _groundHit.normal) <= maxSlopeAngle;
 
         Vector3 moveDir = _input.MoveDirection;
-        if (moveDir.sqrMagnitude > 0.01f && slopeOk)
+        if (moveDir.sqrMagnitude > 0.01f)
         {
             moveDir.Normalize();
             Vector3 worldDir = transform.TransformDirection(moveDir);
